@@ -28,13 +28,16 @@ public class SJF {
             }
         }
 
-        for(int i = 0; i < processMap.size(); i++){
+        for(int i : processMap.keySet()){
             ArrayList<Process> p = processMap.get(i);
             for(Process p1: p){
                 if(p1.getArrivalTime() <= currentTime){
                     int waitTime = currentTime - p1.getArrivalTime();
                     totalWaitTime += waitTime;
                     currentTime += p1.getBurstTime();
+                } else {
+
+                    currentTime += p1.getArrivalTime();
                 }
             }
         }

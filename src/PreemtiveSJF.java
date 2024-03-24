@@ -26,9 +26,9 @@ public class PreemtiveSJF {
             queue.sort((p1, p2) -> p1.getBurstTime() - p2.getBurstTime());
             queue.remove(0);
             if(p.getBurstTime()<pNext.getArrivalTime()){
-                p.setBurstTime(p.getBurstTime()-pNext.getArrivalTime());
+                p.setBurstTime(p.getBurstTime()-currentTime);
                 currentTime += pNext.getArrivalTime();
-                p.setWaitTime(currentTime);
+                totalWaitTime += currentTime - p.getArrivalTime();
                 queue.add(p);
             }
             else{
